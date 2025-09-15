@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,300&display=swap");
+.navbar {
+  background-color: red; /* Set the background color to red */
+}
+
+.navbar-nav .nav-link {
+  color: inherit; /* Inherit the text color from the parent element */
+  transition: color 0.3s; /* Smooth transition for link color change */
+}
+
+.navbar-nav .nav-link:hover {
+  color: yellow; /* Change text color to yellow on hover */
+}
+
+/* Add styles for the active link */
+.navbar-nav .nav-item.active .nav-link {
+  color: yellow; /* Active link text color */
+  font-weight: bold; /* Make the active link text bold, for example */
+}
+.navbar-brand img {
+  background-color: transparent; /* Remove background */
+  height: 50px; /* Adjust the height to maintain the aspect ratio */
+  width: 150px; /* Adjust the width as needed */
+}
+
+/* footer__________*/
+
+.container2 {
+  background-color: rgb(61, 58, 58);
+  margin-bottom: -500px;
+}
+
+/* Additional styling for your other elements */
+.row1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.column1 {
+  margin-top: -95px;
+}
+.column1,
+.column2 {
+  flex: 1;
+  padding: 20px;
+  color: red;
+}
+
+.icons {
+  display: flex;
+
+  margin-top: 20px;
+}
+
+.icons i {
+  margin-right: 10px;
+  color: red;
+}
+
+#vl {
+  border-left: 1px solid red;
+  height: 100px;
+  margin: 0 20px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid rgb(246, 255, 0);
+  border-radius: 5px;
+}
+
+.footerbtn {
+  background-color: red;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footerbtn:hover {
+  background-color: rgb(246, 255, 0);
+}
+
+.hr {
+  border: none;
+  border-top: 2px solid red;
+  margin-top: 20px;
+}
+
+.dev {
+  text-align: center;
+  margin-top: 20px;
+  color: red;
+}
+
+/* You may need to adjust the styles further to achieve your desired appearance. */
+
+/*add to cart button*/
+.CartBtn {
+  width: 140px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background-color: rgb(255, 208, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+}
+
+.IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: 0.5s;
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  font-family: "Montserrat", sans-serif;
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(17, 17, 17);
+  z-index: 1;
+  transition-duration: 0.5s;
+  font-size: 1.04em;
+  font-weight: 600;
+  margin: 1px;
+}
+
+.CartBtn:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: 0.5s;
+}
+
+.CartBtn:hover .text {
+  transform: translate(10px, 0px);
+  transition-duration: 0.5s;
+}
+
+.CartBtn:active {
+  transform: scale(0.95);
+  transition-duration: 0.5s;
+}
+.card {
+  overflow: hidden;
+}
+.card img {
+  height: 250px;
+  transition: transform 0.3s ease-in-out;
+}
+.card img:hover {
+  transform: scale(1.1);
+}
+
+/*HOmeeeeeee*/
+.image-container {
+  background-image: url("assets/1.jpg"); /* Set the image URL */
+  background-size: cover; /* Scale the image to cover the entire container */
+  background-position: center; /* Center the image horizontally and vertically */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  backdrop-filter: blur(7px);
+}
+.image-container2 {
+  background-image: url("assets/theOne.png"); /* Set the image URL */
+  background-size: cover; /* Scale the image to cover the entire container */
+  background-position: center; /* Center the image horizontally and vertically */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  backdrop-filter: blur(7px);
+}
+
+h1 {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.home {
+  height: 100vh;
+}
+
+.shopbtn {
+  text-decoration: none;
+}
+.shopnow {
+  width: 180px;
+  height: 40px;
+  background-image: linear-gradient(rgb(214, 202, 254), rgb(158, 129, 254));
+  border: none;
+  border-radius: 50px;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: 1px 3px 0px rgb(139, 113, 255);
+  transition-duration: 0.3s;
+}
+
+.cartIcon {
+  width: 14px;
+  height: fit-content;
+}
+
+.cartIcon path {
+  fill: white;
+}
+
+.shopnow:active {
+  transform: translate(2px, 0px);
+  box-shadow: 0px 1px 0px rgb(139, 113, 255);
+  padding-bottom: 1px;
+}
