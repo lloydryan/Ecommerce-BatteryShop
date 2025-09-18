@@ -35,24 +35,11 @@ if (isset($_GET['Signout'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/ionicons/dist/css/ionicons.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* CSS to set a fixed width and height for the images */
-        .product-image {
-            width: 80px; /* Adjust the width as needed */
-            height: 80px; /* Adjust the height as needed */
-        }
-    </style>
+ 
     <title>STOCK IN</title>
 </head>
 <body>
-
 <?php
-include_once('navbar/navbar.php');
-?>
-
-<div class="container-fluid">
-    <div class="container">
-        <?php
 
         // Include the database connection file
         require_once('connections/pdo.php');
@@ -79,14 +66,17 @@ include_once('navbar/navbar.php');
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-        ?>
+ ?>
+<?php
+include_once('navbar/navbar.php');
+?>
 
-        <div class="container-fluid">
-            <div class="container"  >
+        <div class="container-fluid  flex-grow-1 overflow-auto px-4" >
                 <h1>Select Item for Stock In</h1>
                 <form method="POST">
-                    <div class="container">
-                        <table class="table text-center align-middle" >
+                    <div class="container    ">
+                        <div class="table-responsive-sm table-fixed-height">
+                            <table class="table text-center align-middle table-bordered table-striped" >
                             <thead >
                             <tr>
                                 <th>Product Image</th>
@@ -125,9 +115,11 @@ include_once('navbar/navbar.php');
                             }
                             ?>
                             </tbody>
-                        </table>
+                            </table>
+                        </div>
+                    </div>
 
-                        <div class="container">
+                    <div class="container">
                         <div class="row">
                     <!-- Content on the left (col-md-8) -->
                             <div class="col-md-10">
@@ -152,13 +144,16 @@ include_once('navbar/navbar.php');
 
             </div>
         </div>
+    </div>
 
-        <?php
-        // Close the database connection
-        $conn = null;
-        ?>
+<?php
+// Close the database connection
+$conn = null;
+?>
 
-        <script src="css/main.js"></script>
+<script src="css/main.js"></script>
+
+       
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     </div>
 </div>

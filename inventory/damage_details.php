@@ -114,7 +114,7 @@ include_once('navbar/navbar.php');
                     </div>
             <!-- Div on the right (col-md-4) -->
                     <div class="col-md-2">
-                    <button type="submit" class="btn-PO ">
+                    <button type="submit"  class="btn-PO d-flex align-items-center gap-0 next ">
                         <div class="svg-wrapper-1">
                          <div class="svg-wrapper">
                             <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

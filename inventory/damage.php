@@ -45,13 +45,6 @@ if (isset($_GET['Signout'])) {
     <title>Damage</title>
 </head>
 <body>
-
-<?php
-include_once('navbar/navbar.php');
-?>
-
-<div class="container-fluid">
-    <div class="container">
 <?php
 // Include the database connection file
 require_once('connections/pdo.php');
@@ -81,13 +74,16 @@ try {
     echo "Error: " . $e->getMessage();
 }
 ?>
+<?php
+include_once('navbar/navbar.php');
+?>
 
-<div class="container-fluid">
-    <div class="container">
+<div class="container-fluid  flex-grow-1 overflow-auto px-4" >
         <h1>Select Item to Tagged as Damage</h1>
         <form method="POST">
             <div class="container">
-                <table class="table text-center align-middle">
+               <div class="table-responsive-sm table-fixed-height" style="max-height: 350px; overflow-y: auto;">
+                    <table class="table text-center align-middle table-bordered table-striped" >
                 <thead>
                 <tr>
                     <th>Product Image</th>
@@ -123,11 +119,15 @@ try {
                         ?>
                     </tbody>
                 </table>
-
-                <div class="form-group">
+                </div>
+                
+                <div class="form-group" style="margin-top: 16px;">
                     <label for="transactionDescription">Transaction Description:</label>
                     <input type="text" name="transactionDescription" class="form-control" id="transactionDescription" required>
                 </div>
+            </div>
+
+                
 
                 <div class="container">
                 <div class="row">

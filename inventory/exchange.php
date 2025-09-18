@@ -47,43 +47,50 @@ $sql = "SELECT request_Id, product_Id, item_serialNO, status FROM exchange_reque
 $stmt = $conn->query($sql);
 
 ?>
-<br>
-<h1>List of Request to Exchange</h1>
-<table class="table text-center align-middle">
-<thead>
-    <tr>
-        <th>Request ID</th>
-        <th>Product ID</th>
-        <th>Item Serial Number</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-</thead>
-<tbody>
-<?php
-    // Loop through the database results and display each row as a table row with a form
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "<tr>";
-        echo "<td>" . $row['request_Id'] . "</td>";
-        echo "<td>" . $row['product_Id'] . "</td>";
-        echo "<td>" . $row['item_serialNO'] . "</td>";
-        echo "<td>" . $row['status'] . "</td>";
-        echo "<td>";
-        echo "<form action='approve_request.php' method='post'>";
-        echo "<input type='hidden' name='requestId' value='" . $row['request_Id'] . "'>";
-        echo "<button class='btn btn-success' type='submit'>Approve</button>";
-        echo "</form>";
-        echo "<form action='decline_request.php' method='post'>";
-        echo "<input type='hidden' name='requestId' value='" . $row['request_Id'] . "'>";
-        echo "<button class='btn btn-danger' type='submit'>Decline</button>";
-        echo "</form>";
-        echo "</td>";
-        echo "</tr>";
-    }
-    ?>
-</tbody>
-</table>
 
+<div class="container-fluid  flex-grow-1 overflow-auto px-4" >
+<h1>List of Request to Exchange</h1>
+<div class="container">
+<div class="table-responsive-sm table-fixed-height ">
+
+    <table class="table text-center align-middle table-bordered table-striped" >
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Product ID</th>
+                <th>Item Serial Number</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php
+            // Loop through the database results and display each row as a table row with a form
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<tr>";
+                echo "<td>" . $row['request_Id'] . "</td>";
+                echo "<td>" . $row['product_Id'] . "</td>";
+                echo "<td>" . $row['item_serialNO'] . "</td>";
+                echo "<td>" . $row['status'] . "</td>";
+                echo "<td>";
+                echo "<form action='approve_request.php' method='post'>";
+                echo "<input type='hidden' name='requestId' value='" . $row['request_Id'] . "'>";
+                echo "<button class='btn btn-success' type='submit'>Approve</button>";
+                echo "</form>";
+                echo "<form action='decline_request.php' method='post'>";
+                echo "<input type='hidden' name='requestId' value='" . $row['request_Id'] . "'>";
+                echo "<button class='btn btn-danger' type='submit'>Decline</button>";
+                echo "</form>";
+                echo "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+</div>
 
 <script src="css/main.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

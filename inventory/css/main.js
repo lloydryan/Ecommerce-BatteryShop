@@ -1,18 +1,16 @@
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebar = document.getElementById('sidebar');
-    const content = document.getElementById('content');
-    const toggleIcon = document.getElementById('toggleIcon');
+    const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("sidebarToggle");
+    const toggleIcon = document.getElementById("toggleIcon");
 
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-        content.classList.toggle('active');
-        
-        if (sidebar.classList.contains('active')) {
-            toggleIcon.classList.remove('bi-x');
-            toggleIcon.classList.add('bi-list');
+    toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("d-none");
+
+        if (sidebar.classList.contains("d-none")) {
+            toggleIcon.classList.remove("bi-x");
+            toggleIcon.classList.add("bi-list");
         } else {
-            toggleIcon.classList.remove('bi-list');
-            toggleIcon.classList.add('bi-x');
+            toggleIcon.classList.remove("bi-list");
+            toggleIcon.classList.add("bi-x");
         }
     });
     function setActiveLink() {

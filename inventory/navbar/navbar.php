@@ -1,11 +1,11 @@
-<div class="d-flex" id="wrapper">
-    
+<div class="container-fluid m-0 p-0 min-vh-100">
+<div class="d-flex" id="wrapper" >
     <!-- Sidebar -->
-    <div class="border-end" id="sidebar">
+    <div class="border-end bg-light" id="sidebar" >
         <div class="p-4">
             <div class="navigation">
                 <h1 class="fs-4">Inventory Management</h1>
-                <ul>
+                <ul class="list-unstyled">
                     <li>
                         <a href="dashboard.php">
                             <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
@@ -20,7 +20,7 @@
                     </li>
                     <li>
                         <a href="stockin.php">
-                            <span class="icon"><ion-icon name="add-circle-outline"></ion-icon></span>
+                            <span class="icon"><ion-icon name="battery-charging-outline"></ion-icon></span>
                             <span class="title">Stock In</span>
                         </a>
                     </li>
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="?Signout=true">
+                        <a href="?signout=true">
                             <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                             <span class="title">Sign Out</span>
                         </a>
@@ -46,13 +46,10 @@
             </div>
         </div>
     </div>
-
-    <!-- Page Content -->
-    <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom">
-            <button class="btn btn-custom" id="sidebarToggle">
-                <i id="toggleIcon" class="bi bi-list"></i>
+       <div id="content" class="flex-grow-1 d-flex flex-column overflow-auto" style="min-height: 100vh; max-width: 100vw;">
+      
+        <nav class="navbar navbar-expand-lg navbar-light  border-bottom toggle">
+            <button class="btn" id="sidebarToggle">
+                <i id="toggleIcon" class="bi bi-x"></i>
             </button>
         </nav>
-    </div>
-</div>
