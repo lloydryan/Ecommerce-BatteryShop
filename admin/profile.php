@@ -50,15 +50,8 @@ if (isset($_GET['signout'])) {
   include_once ('navbar/navbar1.php');
       ?>
      
+<br>
 
-
-
-     <div id="content" class="active">
-                    <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-                        <button class="btn btn-primary" id="sidebarToggle">
-                        <i id="toggleIcon" class="bi bi-x"></i> <!-- Use bi-list as the initial icon -->
-                        </button>
-                    </nav>
                         <div class="container-fluid">
                              <div class="container">
     <div class="row justify-content-center" >

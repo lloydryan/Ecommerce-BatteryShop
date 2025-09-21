@@ -49,8 +49,7 @@ if (isset($_GET['Signout'])) {
                 <h1>DASH BOARD <br> Welcome to admin, LLOYD RYAN LARGO !!!!</h1>
             </div>
         </div>
-    </div>
-</div>
+    
 
 
 

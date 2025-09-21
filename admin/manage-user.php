@@ -55,29 +55,26 @@ if (isset($_GET['signout'])) {
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="d-flex" id="wrapper">   
+  
     <?php
     include_once('navbar/navbar1.php');
     ?>
 
 
         
-            <div id="content" class="active">
-                    <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-                        <button class="btn btn-primary" id="sidebarToggle">
-                        <i id="toggleIcon" class="bi bi-x"></i> <!-- Use bi-list as the initial icon -->
-                        </button>
-                    </nav>
-<br>
-                        <div class="container-fluid">
-                             <div class="container">
+
+                        <div class="container-fluid" >
+                
                             <!-- Your content goes here -->   
-                                
+            
                                 <h1> Customers</h1>
-                                <button class="btn btn-primary" id="addCustomerBtn" style="width: 200px;"> <i class="fa-solid fa-circle-plus fa-xl"></i> Add Customer </button>
+                                <a class="btn btn-primary" id="addCustomerBtn" > 
+                                    <i class="fa-solid fa-circle-plus fa-xl"></i> Add Customer </a>
+                                
                                 <br><br>
-                                <div class="row justify-content-center">              
-                                    <div class="table-responsive">
+                                <div class="container" >
+                                <div class="row justify-content-center" >              
+                                    <div class="table-responsive" >
                                         <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
                                             style="position: relative; height: 400px; width: 100% ">
                                             <table class="table table-striped mb-0">
@@ -100,7 +97,7 @@ if (isset($_GET['signout'])) {
                                                     <?php
                                                     include_once('connections/connection.php');
 
-                                                    $sql = mysqli_query($conn, "SELECT * from users_tbl");
+                                                    $sql = mysqli_query($conn, "SELECT * from customer_tbl");
                                                     $row = mysqli_num_rows($sql);
                                                     if ($row > 0) {
                                                         while ($row = mysqli_fetch_array($sql)) {
@@ -111,7 +108,7 @@ if (isset($_GET['signout'])) {
                                                         <td class="text-center"><?php echo $row['last_name']; ?></td>
                                                         <td class="text-center"><?php echo $row['email']; ?></td>
                                                         <td class="text-center"><?php echo $row['ConNo']; ?></td>
-                                                        <td class="text-center"><?php echo $row['Address1']; ?></td>
+                                                        <td class="text-center"><?php echo $row['Address']; ?></td>
                                                         <td class="text-center"><?php echo $row['Username']; ?></td>
                                                         <td class="text-center"><?php echo $row['Status']; ?></td>
                                                         <td class="text-center">

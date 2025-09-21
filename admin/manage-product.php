@@ -42,33 +42,25 @@ if (isset($_GET['signout'])) {
 </head>
 
 <body>
-    <!-- =============== Navigation ================ -->
-    <div class="d-flex" id="wrapper">  
+    <!-- =============== Navigation ================ --> 
     <?php
   include_once ('navbar/navbar1.php');
       ?>
-            <div id="content" class="active">
-                    <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-                        <button class="btn btn-primary" id="sidebarToggle">
-                        <i id="toggleIcon" class="bi bi-x"></i> <!-- Use bi-list as the initial icon -->
-                        </button>
-                    </nav>
-<br>
+
     
 <div class="container-fluid">
-  <div class="container">
+
     <!-- Your content goes here -->  
    
 
-                    <div class="container" >
+              
                     <h1>Products</h1>      
                             <a href="add-product.php" class="btn btn-primary" >
                             <i class="fa-solid fa-circle-plus fa-xl"></i> Add New Product
                             </a>
-                    </div>
-          
-       
-            <br>
+                    
+            <br><br>
+            <div class="container">   
                       <div class="row justify-content-center" >
                         
                         <div class="table-responsive" >               

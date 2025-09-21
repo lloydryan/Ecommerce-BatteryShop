@@ -43,33 +43,25 @@ if (isset($_GET['signout'])) {
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="d-flex" id="wrapper">  
+
     <?php
   include_once ('navbar/navbar1.php');
       ?>
-            <div id="content" class="active">
-                    <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-                        <button class="btn btn-primary" id="sidebarToggle">
-                        <i id="toggleIcon" class="bi bi-x"></i> <!-- Use bi-list as the initial icon -->
-                        </button>
-                    </nav>
-<br>
+          
     
-<div class="container-fluid">
-  <div class="container">
+<div class="container-fluid" >
+
     <!-- Your content goes here -->  
 
-    <div class="container" >
                     <h1>Employees</h1>      
                             <a href="add-employee.php" class="btn btn-primary" >
                             <i class="fa-solid fa-circle-plus fa-xl"></i> Add New Employee
                             </a>
-                    </div>
-                    <br>
+   
+                    <br><br>
 
-        <div class="container"   >
-          <div class="row justify-content-center" >
-            
+          <div class="container">
+          <div class="row justify-content-center" >            
             <div class="table-responsive" >               
                     <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px; width: 100% ">
                       <table class="table table-striped mb-0">

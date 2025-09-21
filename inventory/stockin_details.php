@@ -51,54 +51,58 @@ include_once('navbar/navbar.php');
 ?>
 
 <div class="container-fluid">
-    <div class="container">
-        <h1>Enter Serial Numbers</h1>
+    <h1>Enter Serial Numbers</h1>
+        <div class="container" >
         <form method="POST">
-            <div class="container">
-                <table class="table">
-                <thead>
-                <tr>                  
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Product Type</th>
-                    <th>Product Description</th>
-                    <th>Enter Quantity</th>
-                 </tr>
-                 </thead>
-                    <tbody>
-                        <?php
-                        require_once('connections/pdo.php');
-                        // Retrieve selected products and transaction description from session
-
-                        $selectedProducts = $_SESSION['selectedProducts'];
-
-                        // Fetch and display selected products
-                        try {
-                            $stmt = $conn->prepare("SELECT product_name, product_image, product_type, product_desc, product_Id FROM product_tbl WHERE product_Id IN (".implode(",", $selectedProducts).")");
-                            $stmt->execute();
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                // Each selected product row in the table
-                                ?>
-                                <tr>
-                                    <td>
-                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['product_image']); ?>"
-                                            alt="Product Image" class="product-image">
-                                    </td>
-                                    <td><?php echo $row['product_name']; ?></td>
-                                    <td><?php echo $row['product_type']; ?></td>
-                                    <td><?php echo $row['product_desc']; ?></td>
-                                    <td>
-                                        <input type="number" name="quantities[<?php echo $row['product_Id']; ?>]" class="form-control" required>
-                                    </td>
+            <div class="row justify-content-center" >                      
+                    <div class="table-responsive" >               
+                        <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; max-height: 400px; width: 100% ">
+                            <table class="table table-striped mb-0">
+                                <thead>
+                                <tr>                  
+                                    <th>Product Image</th>
+                                    <th>Product Name</th>
+                                    <th>Product Type</th>
+                                    <th>Product Description</th>
+                                    <th>Enter Quantity</th>
                                 </tr>
-                                <?php
-                            }
-                        } catch (PDOException $e) {
-                            echo "Error: " . $e->getMessage();
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                                </thead>
+                                    <tbody>
+                                        <?php
+                                        require_once('connections/pdo.php');
+                                        // Retrieve selected products and transaction description from session
+
+                                        $selectedProducts = $_SESSION['selectedProducts'];
+
+                                        // Fetch and display selected products
+                                        try {
+                                            $stmt = $conn->prepare("SELECT product_name, product_image, product_type, product_desc, product_Id FROM product_tbl WHERE product_Id IN (".implode(",", $selectedProducts).")");
+                                            $stmt->execute();
+                                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                                // Each selected product row in the table
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['product_image']); ?>"
+                                                            alt="Product Image" class="product-image">
+                                                    </td>
+                                                    <td><?php echo $row['product_name']; ?></td>
+                                                    <td><?php echo $row['product_type']; ?></td>
+                                                    <td><?php echo $row['product_desc']; ?></td>
+                                                    <td>
+                                                        <input type="number" name="quantities[<?php echo $row['product_Id']; ?>]" class="form-control" required>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        } catch (PDOException $e) {
+                                            echo "Error: " . $e->getMessage();
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                    </div>
+            </div>
 
                 <div class="container">
                 <div class="row">

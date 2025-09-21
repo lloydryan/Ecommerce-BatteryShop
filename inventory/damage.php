@@ -78,48 +78,53 @@ try {
 include_once('navbar/navbar.php');
 ?>
 
-<div class="container-fluid  flex-grow-1 overflow-auto px-4" >
-        <h1>Select Item to Tagged as Damage</h1>
-        <form method="POST">
-            <div class="container">
-               <div class="table-responsive-sm table-fixed-height" style="max-height: 350px; overflow-y: auto;">
-                    <table class="table text-center align-middle table-bordered table-striped" >
-                <thead>
-                <tr>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Product Type</th>
-                    <th>Product Description</th>
-                    <th>Select Item</th>
-                </tr>
-                </thead>
-                    <tbody>
-                        <?php
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            // Each product row in the table
-                            ?>
-                            <tr>
-                                <td>
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['product_image']); ?>"
-                                        alt="Product Image" class="product-image">
-                                </td>
-                                <td><?php echo $row['product_name']; ?></td>
-                                <td><?php echo $row['product_type']; ?></td>
-                                <td><?php echo $row['product_desc']; ?></td>
-                                <td>
-                                    <label>
-                                        <input type="checkbox" name="selectedProducts[]"
-                                            value="<?php echo $row['product_Id']; ?>">
-                                        Select
-                                    </label>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
+<div class="container-fluid  " >
+    <h1>Select Item to Tagged as Damage</h1><br>
+        <div class="container" >
+            <form method="POST">
+                <div class="row justify-content-center" >                      
+                    <div class="table-responsive" >               
+                        <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 350px; width: 100% ">
+                            <table class="table table-striped mb-0">
+                                <thead >
+                                <tr>
+                                    <th>Product Image</th>
+                                    <th>Product Name</th>
+                                    <th>Product Type</th>
+                                    <th>Product Description</th>
+                                    <th>Select Item</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        // Each product row in the table
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <img src="data:image/jpeg;base64,<?php echo base64_encode($row['product_image']); ?>"
+                                                    alt="Product Image" class="product-image">
+                                            </td>
+                                            <td><?php echo $row['product_name']; ?></td>
+                                            <td><?php echo $row['product_type']; ?></td>
+                                            <td><?php echo $row['product_desc']; ?></td>
+                                            <td>
+                                                <label>
+                                                    <input type="checkbox" name="selectedProducts[]"
+                                                        value="<?php echo $row['product_Id']; ?>">
+                                                    Select
+                                                </label>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+            
                 
                 <div class="form-group" style="margin-top: 16px;">
                     <label for="transactionDescription">Transaction Description:</label>
@@ -151,6 +156,7 @@ include_once('navbar/navbar.php');
 
     </div>
 </div>
+
 
 <?php
 // Close the database connection

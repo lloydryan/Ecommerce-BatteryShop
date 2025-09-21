@@ -37,17 +37,17 @@
                         </a>
                     </li>
                     <li>
-                        <a href="?signout=true">
+                        <a href="?Signout=true">
                             <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                             <span class="title">Sign Out</span>
                         </a>
-                    </li>
+                    </li> 
                 </ul>
             </div>
         </div>
     </div>
-       <div id="content" class="flex-grow-1 d-flex flex-column overflow-auto" style="min-height: 100vh; max-width: 100vw;">
-      
+
+    <div id="content" class="flex-grow-1 d-flex flex-column overflow-auto" style="min-height: 100vh; max-width: 100vw;">  
         <nav class="navbar navbar-expand-lg navbar-light  border-bottom toggle">
             <button class="btn" id="sidebarToggle">
                 <i id="toggleIcon" class="bi bi-x"></i>

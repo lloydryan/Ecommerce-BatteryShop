@@ -1,6 +1,7 @@
-
-
-<div class="border-end" id="sidebar">
+<div class="container-fluid m-0 p-0 min-vh-100">
+<div class="d-flex" id="wrapper" >
+    <!-- Sidebar -->
+    <div class="border-end bg-light" id="sidebar" >
         <div class="p-4">
         <div class="navigation">
             <h1 class="fs-4">Mark's Shop</h1>         
@@ -46,7 +47,7 @@
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
-                        <span class="title">Profile Settings</span>
+                        <span class="title">Settings</span>
                     </a>
                 </li>
                 <li>
@@ -61,3 +62,10 @@
         </div>
     </div>
     </div>
+
+    <div id="content" class="flex-grow-1 d-flex flex-column overflow-auto" style="min-height: 100vh; max-width: 100vw;">
+                    <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
+                        <button class="btn btn-primary" id="sidebarToggle">
+                        <i id="toggleIcon" class="bi bi-x"></i> <!-- Use bi-list as the initial icon -->
+                        </button>
+                    </nav>

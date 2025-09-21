@@ -1,43 +1,59 @@
+@font-face{
+    font-family: "MyFont";
+    src: 
+         url("./Audiowide-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root{
+    --blue1: #000957;
+--blue2:#344CB7;
+--blue3:#577BC1;
+--yellow:#FFEB00;
+--black:#333;
+--white:#eee;
+
+}
+
+
 body {
     overflow-x: hidden;
+    background-color: var(--white);
+    font-family: 'MyFont', sans-serif;  
+}
+h1{
+    text-align: center;
+    color: var(--black);
 }
 
-#sidebar {
-    height: 100vh;
-    background-color: #1d92f1;
-    color: #fff;
-    transition: all 0.3s;
-    z-index: 1;
-    position: fixed;
-    top: 0;
-    left: 0; /* Initially visible */
-    width: 20%;
-    overflow-x: hidden;
-}
 
-#sidebar.active {
-    left: -20%; /* Move the sidebar off-screen when not active */
-}
+.toggle{
+    padding-top: 15px;
+    padding-bottom: 15px;
 
-#content {
-    transition: all 0.3s;
-    margin-left: 0;
-    padding: 15px;
-    width: 100%; /* Takes up full width initially */
 }
-
-#content.active {
-    margin-left: 20%; /* Moves content area to the right when sidebar is active */
-    width: 80%; /* Adjusts width when sidebar is active */
+#sidebar{
+    background-color: var(--blue1) !important;
 }
-
+.navigation h1{
+    color:var(--yellow) !important;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#sidebarToggle{
+    background-color: var(--blue1) !important;
+    color: var(--white) !important;
+    margin-left: 12px;
+}
+    
 
 /* Add this CSS to your existing styles */
 .navigation {
     width: 100%;
     height: 100%;
-    background: #1d92f1;
-    border-left: 10px solid #1d92f1;
+    background: var(--blue1);
+    border-left: 10px solid --blue1;
     transition: 0.5s;
     overflow-y: auto; /* Add vertical scroll if needed */
 }
@@ -50,15 +66,15 @@ body {
 .navigation ul li {
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-    margin-bottom: 10px; /* Add some spacing between items */
+    margin-bottom: 8px; /* Add some spacing between items */
     
 }
 
 .navigation ul li a {
     display: flex;
     text-decoration: none;
-    color: #fff;
-    padding: 10px;
+    color: var(--white);
+    padding: 8px;
 }
 
 .navigation ul li a .icon {
@@ -67,7 +83,7 @@ body {
 }
 
 .navigation ul li a .icon ion-icon {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
 }
 
 .navigation ul li a .title {
@@ -81,18 +97,16 @@ body {
 
 .navigation ul li  :hover
  {
-    background-color: #fff;
-    color:  #1d92f1;   
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    background-color: var(--white);
+    color:  var(--blue1);   
+    border-radius: 30px;
+
 }
 .navigation ul li .active {
-    background-color: #fff;
-    color: #1d92f1;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    background-color: var(--white);
+    color: var(--blue1);
+    border-radius: 30px;
 }
-
 /* Media queries and responsive styles */
 @media (max-width: 768px) {
     #sidebar {
@@ -121,3 +135,5 @@ body {
         margin-left: 0; /* Reset margin when sidebar is not active */
     }
 }
+
+    

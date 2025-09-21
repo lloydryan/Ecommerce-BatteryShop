@@ -71,54 +71,57 @@ if (isset($_GET['Signout'])) {
 include_once('navbar/navbar.php');
 ?>
 
-        <div class="container-fluid  flex-grow-1 overflow-auto px-4" >
-                <h1>Select Item for Stock In</h1>
-                <form method="POST">
-                    <div class="container    ">
-                        <div class="table-responsive-sm table-fixed-height">
-                            <table class="table text-center align-middle table-bordered table-striped" >
-                            <thead >
-                            <tr>
-                                <th>Product Image</th>
-                                <th>Product Name</th>
-                                <th>Product Type</th>
-                                <th>Product Description</th>
-                                <th>Available Item</th>
-                                <th>Select Item</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                // Each product row in the table
-                                $availableItem = $row["available_item"];
-                                $status = ($availableItem < 5) ? '<span class="text-danger"><b>LOW</b></span>' : '<span class="text-success"><b>High</b></span>';
-                                ?>
+<div class="container-fluid">
+    <h1>Select Item for Stock In</h1><br>
+        <div class="container" >
+            <form method="POST">
+                <div class="row justify-content-center" >                      
+                    <div class="table-responsive" >               
+                        <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px; width: 100% ">
+                            <table class="table table-striped mb-0">
+                                <thead >
                                 <tr>
-                                    <td>
-                                        <img src="data:image/jpeg;base64,<?php echo base64_encode($row['product_image']); ?>"
-                                             alt="Product Image" class="product-image">
-                                    </td>
-                                    <td><?php echo $row['product_name']; ?></td>
-                                    <td><?php echo $row['product_type']; ?></td>
-                                    <td><?php echo $row['product_desc']; ?></td>
-                                    <td><?php echo $availableItem . " " . $status; ?></td>
-                                    <td>
-                                        <label>
-                                            <input type="checkbox" name="selectedProducts[]"
-                                                   value="<?php echo $row['product_Id']; ?>">
-                                            Select
-                                        </label>
-                                    </td>
+                                    <th>Product Image</th>
+                                    <th>Product Name</th>
+                                    <th>Product Type</th>
+                                    <th>Product Description</th>
+                                    <th>Available Item</th>
+                                    <th>Select Item</th>
                                 </tr>
+                                </thead>
+                                <tbody>
                                 <?php
-                            }
-                            ?>
-                            </tbody>
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    // Each product row in the table
+                                    $availableItem = $row["available_item"];
+                                    $status = ($availableItem < 5) ? '<span class="text-danger"><b>LOW</b></span>' : '<span class="text-success"><b>High</b></span>';
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($row['product_image']); ?>"
+                                                alt="Product Image" class="product-image">
+                                        </td>
+                                        <td><?php echo $row['product_name']; ?></td>
+                                        <td><?php echo $row['product_type']; ?></td>
+                                        <td><?php echo $row['product_desc']; ?></td>
+                                        <td><?php echo $availableItem . " " . $status; ?></td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" name="selectedProducts[]"
+                                                    value="<?php echo $row['product_Id']; ?>">
+                                                Select
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
-
+                </div>
+            </div>
                     <div class="container">
                         <div class="row">
                     <!-- Content on the left (col-md-8) -->
@@ -127,7 +130,7 @@ include_once('navbar/navbar.php');
                             </div>
                     <!-- Div on the right (col-md-4) -->
                             <div class="col-md-2">
-                            <button class="next" type="submit">
+                            <button class="next" id="nextBtn" type="submit">
                                 Next
                             <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
                             <path clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fill-rule="evenodd"></path>
@@ -152,7 +155,18 @@ $conn = null;
 ?>
 
 <script src="css/main.js"></script>
+<script>
+// Enable/disable Next button based on checkbox selection
+const checkboxes = document.querySelectorAll("input[name='selectedProducts[]']");
+const nextBtn = document.getElementById("nextBtn");
 
+function toggleNextButton() {
+    const checked = document.querySelectorAll("input[name='selectedProducts[]']:checked").length > 0;
+    nextBtn.disabled = !checked;
+}
+
+checkboxes.forEach(cb => cb.addEventListener("change", toggleNextButton));
+</script>
        
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     </div>
