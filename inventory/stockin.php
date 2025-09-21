@@ -34,6 +34,7 @@ if (isset($_GET['Signout'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/ionicons/dist/css/ionicons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/style.css">
  
     <title>STOCK IN</title>
@@ -130,12 +131,13 @@ include_once('navbar/navbar.php');
                             </div>
                     <!-- Div on the right (col-md-4) -->
                             <div class="col-md-2">
-                            <button class="next" id="nextBtn" type="submit">
-                                Next
-                            <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
-                            <path clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fill-rule="evenodd"></path>
-                            </svg>
-                            </button>                            
+                                <button class="next" id="nextBtn" type="submit">
+                                    Next
+                                    <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                                        <path clip-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" fill-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                                                                
                             </div>
                         </div>
                     </div>
@@ -154,20 +156,28 @@ include_once('navbar/navbar.php');
 $conn = null;
 ?>
 
-<script src="css/main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-// Enable/disable Next button based on checkbox selection
+const form = document.querySelector("form");
 const checkboxes = document.querySelectorAll("input[name='selectedProducts[]']");
 const nextBtn = document.getElementById("nextBtn");
 
-function toggleNextButton() {
+form.addEventListener("submit", function(e) {
     const checked = document.querySelectorAll("input[name='selectedProducts[]']:checked").length > 0;
-    nextBtn.disabled = !checked;
-}
-
-checkboxes.forEach(cb => cb.addEventListener("change", toggleNextButton));
+    if (!checked) {
+        e.preventDefault(); // Stop form from submitting
+        Swal.fire({
+            icon: "warning",
+            title: "No item selected",
+            text: "Please select at least one product before proceeding.",
+            confirmButtonText: "OK"
+        });
+    }
+});
 </script>
-       
+
+<script src="css/main.js"></script>       
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     </div>
 </div>

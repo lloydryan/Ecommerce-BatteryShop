@@ -78,7 +78,7 @@ try {
 include_once('navbar/navbar.php');
 ?>
 
-<div class="container-fluid  " >
+<div class="container-fluid" >
     <h1>Select Item to Tagged as Damage</h1><br>
         <div class="container" >
             <form method="POST">
@@ -121,24 +121,25 @@ include_once('navbar/navbar.php');
                                     ?>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                </div>
+                        </div>  
+                    </div>                 
+                </div>                 
+            </div>
             
                 
-                <div class="form-group" style="margin-top: 16px;">
-                    <label for="transactionDescription">Transaction Description:</label>
-                    <input type="text" name="transactionDescription" class="form-control" id="transactionDescription" required>
-                </div>
-            </div>
+            
+            
 
                 
 
-                <div class="container">
-                <div class="row">
+                <div class="container" >
+                <div class="row ">
             <!-- Content on the left (col-md-8) -->
-                     <div class="col-md-10">
-
+                     <div class="col-md-10" style="padding-left: 35px" >
+                        <div class="form-group trasnactionDescription" style="margin-top: 16px;">
+                    <label for="transactionDescription">Transaction Description:</label>
+                    <input type="text" name="transactionDescription" class="form-control" id="transactionDescription" required>
+                         </div>
                     </div>
             <!-- Div on the right (col-md-4) -->
                     <div class="col-md-2">
@@ -155,6 +156,8 @@ include_once('navbar/navbar.php');
         </form>
 
     </div>
+</div> 
+</div>
 </div>
 
 
@@ -162,6 +165,25 @@ include_once('navbar/navbar.php');
 // Close the database connection
 $conn = null;
 ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+const form = document.querySelector("form");
+const checkboxes = document.querySelectorAll("input[name='selectedProducts[]']");
+const nextBtn = document.getElementById("nextBtn");
+
+form.addEventListener("submit", function(e) {
+    const checked = document.querySelectorAll("input[name='selectedProducts[]']:checked").length > 0;
+    if (!checked) {
+        e.preventDefault(); // Stop form from submitting
+        Swal.fire({
+            icon: "warning",
+            title: "No item selected",
+            text: "Please select at least one product before proceeding.",
+            confirmButtonText: "OK"
+        });
+    }
+});
+</script>
 
 <script src="css/main.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

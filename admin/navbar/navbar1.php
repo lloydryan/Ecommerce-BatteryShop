@@ -4,7 +4,7 @@
     <div class="border-end bg-light" id="sidebar" >
         <div class="p-4">
         <div class="navigation">
-            <h1 class="fs-4">Mark's Shop</h1>         
+            <h1 class="fs-4" style="width:300px">Mark's Shop</h1>         
             <ul>
                 <li>
                     <a href="dashboard.php">

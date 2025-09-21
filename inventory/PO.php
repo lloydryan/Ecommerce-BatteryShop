@@ -44,12 +44,12 @@ if (isset($_GET['Signout'])) {
 include_once('navbar/navbar.php');
 ?>
 
-<div class="container-fluid">
-    <div class="container">
+<div class="container-fluid purchaseOrder" >
         <!-- Purchase Order Form -->
-        <form method="post">
-            <h1>Purchase Order</h1>
-            <div class="mb-3">
+         <h1 class="PO_title">Purchase Order</h1>
+<div class="container">
+        <form method="post">            
+            <div class="mb-3 mt-3">
                 <label class="PO_label" for="supplier_Id">Supplier:</label>
                 <select id="supplier_Id" name="supplier_Id" class="form-control" required>
                     <?php
@@ -120,12 +120,14 @@ if (mysqli_num_rows($result) > 0) {
 
             
 
-
+        <div class="container button-container">
             <button type="button" class="btnADD" id="addProduct">
              <span class="button__text">Add Product</span>
             <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
             </button>
-            <button type="submit" class="btn-PO ">
+            
+            <button type="submit" class="btnPO ">
+                <span>Submit</span>
                 <div class="svg-wrapper-1">
                 <div class="svg-wrapper">
                 <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -134,9 +136,8 @@ if (mysqli_num_rows($result) > 0) {
                 </svg>
                 </div>
             </div>
-            <span>Submit</span>
             </button>
-        
+        </div>
                 
         </form>
 
