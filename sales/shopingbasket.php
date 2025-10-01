@@ -7,20 +7,20 @@ $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 
 // Handle the "Update" button action
 if (isset($_POST['itemUpdate'])) {
-        $newQuantity = intval($_POST['iqty']);
-        $itemName = $_POST['item'];
+    $newQuantity = intval($_POST['iqty']);
+    $itemName = $_POST['item'];
 
-        foreach ($_SESSION['cart'] as &$item) {
-            if ($item['name'] === $itemName) {
-                $item['qty'] = $newQuantity;
-                break;
-            }
+    foreach ($_SESSION['cart'] as &$item) {
+        if ($item['name'] === $itemName) {
+            $item['qty'] = $newQuantity;
+            break;
         }
-        header("Location: shopingbasket.php");
-        exit;
     }
-if (isset($_POST['checkout'])) {
+    header("Location: shopingbasket.php");
+    exit;
+}
 
+if (isset($_POST['checkout'])) {
     $user_id = isset($_SESSION['ID']) ? $_SESSION['ID'] : 0;
     if ($user_id == 0) {
         header('Location: shopingbasket.php?error=true');
@@ -90,327 +90,653 @@ foreach ($cart as $item) {
 
 if (isset($_GET['logout'])) {
     $_SESSION = array();
-    // Destroy the session
     session_destroy();
-
-    // Redirect to the login page
     header("Location: home.php");
     exit;
 }
 ?>
 
-
 <!doctype html>
 <html lang="en">
 <head>
-<head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Shopping Basket</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <title>Shopping Cart - BatteryShop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script defer src="active_link.js"></script>
-</head>
-<body class="image-container2">
-  <?php
-    include_once('header-footer/header.php');
-  ?>
-
-
-
-
-<div class="wrapper">
-        <h1>Shopping Cart</h1>
-        <div class="project">
-            <div class="shop">
-                <!-- Your PHP code for displaying cart items goes here -->
-                <?php
-// Display images in the HTML along with other product details
-foreach ($cart as $key => $item) {
-    ?>
-    <div class="box">
-        <img src="<?php echo $item['image_url']; ?>" alt="<?php echo $item['name']; ?>">
-        <div class="content">
-            <h3><?php echo $item['name']; ?></h3>
-            <h5>Type: <?php echo $item['type']; ?></h5>
-            <h4>Price: ₱<?php echo $item['price']; ?></h4>
-            <form method="POST">
-                <p class="unit">Quantity: <input type="number" name="iqty" min="1" max="50" value="<?php echo $item['qty']; ?>"></p>
-                <input type="hidden" name="item" value="<?php echo $item['name']; ?>">
-                <input type="hidden" name="totalprice" value="<?php echo $total_price; ?>">
-                <button type="submit" name="itemUpdate" class="btn1"><i class="fa fa-pencil"></i>Update</button>
-                <button type="submit" name="itemRemove" class="btn2"><i aria-hidden="true" class="fa fa-trash"></i>Remove</button>
-             </form>
-        </div>
-    </div>
-    <?php
-} ?>
-
-            </div>
-            <form method="POST">
-            <div class="right-bar">
-                <p><span>Subtotal:</span> <span>₱<?php echo $total_price; ?></span></p>
-                <hr>
-                <p><span>Tax (6%)</span> <span>₱6</span></p>
-                <hr>
-                <p><span>Shipping</span> <span>₱150</span></p>
-                <hr>
-                <p><span>Total:</span> <span>₱<?php echo $total_price + 6 + 150; ?></span></p>
-                <input type="hidden" name="checkout" value="1">
-                <button type="submit" class="checkout-button"><i class="fa fa-shopping-cart"></i>Checkout</button>
-
-            </div>
-            </form>
-        </div>
-    </div>
-  <br><br><br><br>
-  <?php
-    include_once('header-footer/footer.php');
-  ?>
-  <br><br><br><br>
-  <?php
-    include_once('header-footer/footer.php');
-  ?>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-  // Show a success message when the item is added to the cart
-  <?php if(isset($_GET['success'])) { ?>
-    Swal.fire({
-      title: 'Success!',
-      text: 'Checked out Successful.',
-      icon: 'success',
-      button: "OK",
-  }).then(function () {
-      window.location.href = "shopingbasket.php";
-  });
-    
-  <?php } ?>
-  
-  // Show an error message when the item is already in the cart
-  <?php if(isset($_GET['error'])) { ?>
-    Swal.fire({
-      title: 'Warning!',
-      text: 'You need to Login First!.',
-      icon: 'warning',
-      button: "OK",
-  }).then(function () {
-      window.location.href = "login.php";
-  });
-    
-  <?php } ?>
-</script>
-
-
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-AOS.init();
-</script>
-
-<script>
- const navbar = document.querySelector('.navbar');
-
-    navbar.classList.add('scrolled');
-
-</script>
-
-<script>
-  const search = document.querySelector('.search');
-  const searchHeight = search.offsetHeight;
-
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > search.offsetTop + searchHeight - 70) {
-      search.classList.add('fixed');
-    } else {
-      search.classList.remove('fixed');
-    }
-  });
-</script>
-<script>
-  window.onload = function() {
-  window.scrollTo(0, 0);
-}
-
-
-</script>
-
-   
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-  <style>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: #ffe3e2;
-            font-family: montserrat;
-        }
-        .wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .wrapper h1 {
-            padding: 20px 0;
-            text-align: center;
-            text-transform: uppercase;
-        }
-        .project {
-            display: flex;
-        }
-        .shop {
-            flex: 75%;
-        }
-        .checkout-button{
-            border: none;
-            position: absolute;
-            border-radius: 0;
-            padding: 10px 15px;
-            border-radius: 6px;
-            background-color: #8EE4B9;
-        }
-        .box {
-            display: flex;
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            background: #fff;
-            transition: all 0.6s ease;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            flex-wrap: nowrap;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
-        .box:hover {
-            border: none;
-            transform: scale(1.01);
-        }
-        .box img {
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-        }
-        .content {
-            padding: 20px;
-            width: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
             position: relative;
         }
-        .content h4 {
-            margin-bottom: 35px;
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+            z-index: -1;
         }
-        .btn1{
-           position: absolute;
-           border: none;
-           bottom: 100px;
-           right: 20px;
-           padding: 10px 27px;
-           background-color: #3a71a9;
-           color: white;
-           cursor: pointer;
-           border-radius: 5px;
-        }
-        .btn2 {
-            border: none;
-            position: absolute;
-            bottom: 40px;
-            right: 20px;
-            padding: 10px 25px;
-            background-color: #3a71a9;
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            cursor: pointer;
-            border-radius: 5px;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .btn2:hover {
-            background-color: #76bfb6;
-            color: #fff;
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/theOne.png') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .cart-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .cart-items {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px solid #f3f4f6;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item:hover {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 25px 15px;
+            margin: 0 -15px;
+        }
+
+        .item-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-right: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-details {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .item-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .item-type {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .item-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #667eea;
+        }
+
+        .item-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 8px 12px;
+        }
+
+        .quantity-label {
+            font-size: 0.9rem;
             font-weight: 600;
+            color: #374151;
         }
-        .unit input {
-            width: 40px;
-            padding: 5px;
+
+        .quantity-input {
+            width: 60px;
+            padding: 6px 8px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-update {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-update:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-remove {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-remove:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .cart-summary {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 100px;
+        }
+
+        .summary-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 24px;
             text-align: center;
         }
-        .btn1 i {
-            margin-right: 5px;
-        }
-        .btn2 i {
-            margin-right: 5px;
-        }
-        .right-bar {
-            flex: 25%;
-            margin-left: 20px;
-            padding: 20px;
-            height: 400px;
-            border-radius: 5px;
-            background: #fff;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        }
-        .right-bar hr {
-            margin-bottom: 25px;
-        }
-        .right-bar p {
+
+        .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 30px;
-            font-size: 20px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
         }
-        .right-bar a {
-            background-color: #76bfb6;
-            color: #fff;
-            text-decoration: none;
-            display: block;
+
+        .summary-row:last-child {
+            border-bottom: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+        }
+
+        .summary-label {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .summary-value {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .checkout-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .empty-cart {
             text-align: center;
-            height: 40px;
-            line-height: 40px;
-            font-weight: 900;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-        .right-bar i {
-            margin-right: 15px;
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            color: #9ca3af;
+            margin-bottom: 24px;
         }
-        .right-bar a:hover {
-            background-color: #3972a7;
+
+        .empty-cart h3 {
+            font-size: 1.8rem;
+            color: #374151;
+            margin-bottom: 12px;
         }
-        @media screen and (max-width: 700px) {
-            .content h3 {
-                margin-bottom: 15px;
-            }
-            .content h4 {
-                margin-bottom: 20px;
-            }
-            .btn2 {
-                display: none;
-            }
-            .box {
-                height: 150px;
-            }
-            .box img {
-                height: 150px;
-                width: 200px;
-            }
+
+        .empty-cart p {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-bottom: 32px;
         }
-        @media screen and (max-width: 900px) {
-            .project {
+
+        .continue-shopping {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .continue-shopping:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cart-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cart-summary {
+                position: static;
+            }
+
+            .cart-item {
                 flex-direction: column;
+                align-items: stretch;
+                text-align: center;
             }
-            .right-bar {
-                margin-left: 0;
-                margin-bottom: 20px;
+
+            .item-image {
+                width: 100%;
+                height: 200px;
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+
+            .item-details {
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+
+            .item-controls {
+                align-items: center;
+            }
+
+            .item-actions {
+                justify-content: center;
             }
         }
-        @media screen and (max-width: 1250px) {
-            .wrapper {
-                max-width: 95%;
+
+        @media (max-width: 480px) {
+            .cart-container {
+                padding: 20px 10px;
+            }
+
+            .cart-title {
+                font-size: 2rem;
+            }
+
+            .cart-items,
+            .cart-summary {
+                padding: 20px;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
+</head>
+<body>
+    <?php include_once('header-footer/header.php') ?>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title" data-aos="fade-up">Shopping Cart</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Review your items and proceed to checkout
+            </p>
+        </div>
+    </section>
+
+    <div class="cart-container">
+
+        <?php if (empty($cart)): ?>
+            <div class="empty-cart" data-aos="fade-up">
+                <div class="empty-cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Your cart is empty</h3>
+                <p>Looks like you haven't added any items to your cart yet.</p>
+                <a href="product.php" class="continue-shopping">
+                    <i class="fas fa-shopping-bag"></i>
+                    Continue Shopping
+                </a>
+            </div>
+        <?php else: ?>
+            <div class="cart-content">
+                <div class="cart-items" data-aos="fade-right">
+                    <?php foreach ($cart as $key => $item): ?>
+                        <div class="cart-item fade-in">
+                            <img src="<?php echo $item['image_url']; ?>" alt="<?php echo $item['name']; ?>" class="item-image">
+                            
+                            <div class="item-details">
+                                <h3 class="item-name"><?php echo $item['name']; ?></h3>
+                                <p class="item-type"><?php echo $item['type']; ?></p>
+                                <div class="item-price">₱<?php echo number_format($item['price'], 2); ?></div>
+                            </div>
+
+                            <div class="item-controls">
+                                <form method="POST" class="quantity-control">
+                                    <label class="quantity-label">Qty:</label>
+                                    <input type="number" name="iqty" min="1" max="50" value="<?php echo $item['qty']; ?>" class="quantity-input">
+                                    <input type="hidden" name="item" value="<?php echo $item['name']; ?>">
+                                    <button type="submit" name="itemUpdate" class="btn-update">
+                                        <i class="fas fa-sync-alt"></i>
+                                        Update
+                                    </button>
+                                </form>
+
+                                <div class="item-actions">
+                                    <form method="POST" style="display: inline;">
+                                        <input type="hidden" name="item" value="<?php echo $item['name']; ?>">
+                                        <button type="submit" name="itemRemove" class="btn-remove" onclick="return confirm('Are you sure you want to remove this item?')">
+                                            <i class="fas fa-trash"></i>
+                                            Remove
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <div class="cart-summary" data-aos="fade-left">
+                    <h3 class="summary-title">Order Summary</h3>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Subtotal:</span>
+                        <span class="summary-value">₱<?php echo number_format($total_price, 2); ?></span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Tax (6%):</span>
+                        <span class="summary-value">₱6.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Shipping:</span>
+                        <span class="summary-value">₱150.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span class="summary-label">Total:</span>
+                        <span class="summary-value">₱<?php echo number_format($total_price + 6 + 150, 2); ?></span>
+                    </div>
+
+                    <form method="POST">
+                        <input type="hidden" name="checkout" value="1">
+                        <button type="submit" class="checkout-btn">
+                            <i class="fas fa-credit-card"></i>
+                            Proceed to Checkout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <?php include_once('header-footer/footer.php') ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Show success message
+        <?php if(isset($_GET['success'])) { ?>
+            Swal.fire({
+                title: 'Order Placed Successfully!',
+                text: 'Your order has been processed and will be delivered soon.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 5000,
+                timerProgressBar: true
+            }).then(() => {
+                window.location.href = "orders.php";
+            });
+        <?php } ?>
+
+        // Show error message
+        <?php if(isset($_GET['error'])) { ?>
+            Swal.fire({
+                title: 'Login Required!',
+                text: 'You need to login first to proceed with checkout.',
+                icon: 'warning',
+                confirmButtonText: 'Login Now'
+            }).then(() => {
+                window.location.href = "login.php";
+            });
+        <?php } ?>
+
+        // Add smooth scroll behavior
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add hover effects to cart items
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            cartItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add quantity input validation
+            const quantityInputs = document.querySelectorAll('.quantity-input');
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value < 1) this.value = 1;
+                    if (this.value > 50) this.value = 50;
+                });
+            });
+
+            // Add loading animation to forms
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    if (this.querySelector('button[name="itemUpdate"]') || this.querySelector('button[name="itemRemove"]')) {
+                        const btn = this.querySelector('button[type="submit"]');
+                        const originalText = btn.innerHTML;
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                        btn.disabled = true;
+                        
+                        // Re-enable after 2 seconds
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                        }, 2000);
+                    }
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.onscroll = () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+    </script>
 </body>
 </html>

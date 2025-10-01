@@ -76,276 +76,670 @@ if (isset($_POST['addCart'])) {
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Battery</title>
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Products - BatteryShop</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script defer src="active_link.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
-      <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  </head>
-  <body style="
-        background-image: url('assets/theOne.png'); /* Set the image URL */
-        background-size: cover; /* Scale the image to cover the entire container */
-        background-position: center; /* Center the image horizontally and vertically */
-        background-repeat: no-repeat; /* Prevent the image from repeating */ ">
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/theOne.png') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: -40px auto 40px;
+            max-width: 1000px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 14px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            background: #f9fafb;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .filter-select {
+            min-width: 200px;
+            padding: 14px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 16px;
+            background: #f9fafb;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 14px 30px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-in-stock {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .badge-low-stock {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .badge-out-of-stock {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .product-type {
+            color: #6b7280;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .quantity-section {
+            margin-bottom: 20px;
+        }
+
+        .quantity-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .quantity-input {
+            width: 80px;
+            padding: 8px 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .add-to-cart-btn:hover::before {
+            left: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .add-to-cart-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .add-to-cart-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            font-size: 1.5rem;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+
+        .no-results p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .search-section {
+                margin: -20px 20px 30px;
+                padding: 20px;
+            }
+            
+            .search-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-input,
+            .filter-select {
+                min-width: auto;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 80px 0 40px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .search-section {
+                margin: -10px 10px 20px;
+                padding: 15px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
 
 
 
-  <?php
+    <?php include_once('header-footer/header.php') ?>
 
-  include_once('header-footer/header.php')
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title" data-aos="fade-up">Premium Battery Collection</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                Discover our wide range of high-quality batteries for all your devices
+            </p>
+        </div>
+    </section>
 
-  ?>
-
-    
-
-        <br><br><br><br>
-
-<section class="search search-expand-lg">
-  <div class="container">
-    <div class="row">
-    <div class="col-8 flex-end">
-      <form class="d-flex" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-        <input class="form-control me-2" type="search" placeholder="Search product name here" aria-label="Search" id="searchInput" name="searchInput" autocomplete="off" value="<?php echo isset($_POST['searchInput']) ? $_POST['searchInput'] : ''; ?>">
-        
-        <!-- Add the dropdown menu here -->
-        <select class="form-select" name="productType" id="productType">
-          <option value="">All Product Types</option>
+    <!-- Search Section -->
+    <div class="search-section slide-up">
+        <form class="search-form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <input 
+                class="search-input" 
+                type="search" 
+                placeholder="Search for batteries..." 
+                name="searchInput" 
+                autocomplete="off" 
+                value="<?php echo isset($_POST['searchInput']) ? htmlspecialchars($_POST['searchInput']) : ''; ?>"
+            >
+            
+            <select class="filter-select" name="productType" id="productType">
+                <option value="">All Categories</option>
           <?php
-          // Fetch distinct product types from the database
+                require_once('connections/pdo.php');
           $stmt = $conn->prepare("SELECT DISTINCT product_type FROM product_tbl ORDER BY product_type");
           $stmt->execute();
           $productTypes = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-          // Create options for each product type
           foreach ($productTypes as $type) {
-            echo "<option value=\"$type\">" . ucfirst($type) . "</option>";
+                    $selected = (isset($_POST['productType']) && $_POST['productType'] == $type) ? 'selected' : '';
+                    echo "<option value=\"$type\" $selected>" . ucfirst($type) . "</option>";
           }
           ?>
         </select>
         
-        <button class="btn" type="submit" id="search-button" name="search-button" style="background-color:rgb(255, 208, 0);"><b>Search</b> </button>
+            <button class="search-btn" type="submit" name="search-button">
+                <i class="fas fa-search me-2"></i>Search
+            </button>
       </form>
     </div>
-    </div>
-  </div>
-</section>
 
-      <div class="container"> 
-          <div class="row">
-          
-              <?php
-              require_once('connections/pdo.php');
-
-              $search_result_set = array(); // initialize an empty array to hold the search results
-
-             // ...
-
-              // Check if the form is submitted
-              if (isset($_POST['search-button'])) {
-                $term = $_POST['searchInput'];
-                $productType = $_POST['productType'];
-
-                // Construct the SQL query based on the selected product type
-                $query = "SELECT * FROM product_tbl WHERE product_name LIKE :searchInput";
-                $params = ['searchInput' => '%' . $term . '%'];
-
-                if (!empty($productType)) {
-                  $query .= " AND product_type = :productType";
-                  $params['productType'] = $productType;
-                }
-
-                $query .= " ORDER BY product_name";
-
-                $stmt = $conn->prepare($query);
-                $stmt->execute($params);
-                $search_result_set = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                if (count($search_result_set) == 0) {
-                  echo '<h4>No results found for your search term "' . $term . '"</h4>';
-                } else {
-                  // display search results
-                }
-              } else {
-                // Default query without any filters
-                $stmt = $conn->prepare("SELECT * FROM product_tbl ORDER BY product_name");
-                $stmt->execute();
-                $search_result_set = $stmt->fetchAll(PDO::FETCH_ASSOC);
-              }
-
-              // ...
-
-              ?>
-          </div>
-      </div>
-
-  <br><br><br>
-
-  <div class="container my-4">
-    <div class="row g-4">
+    <!-- Products Section -->
+    <div class="products-container">
         <?php
         require_once('connections/pdo.php');
-        $query = "SELECT * FROM product_tbl ORDER BY product_name";
-        $params = [];
+        $search_result_set = array();
 
         if (isset($_POST['search-button'])) {
             $term = $_POST['searchInput'];
             $productType = $_POST['productType'];
 
             $query = "SELECT * FROM product_tbl WHERE product_name LIKE :searchInput";
-            $params['searchInput'] = "%$term%";
+            $params = ['searchInput' => '%' . $term . '%'];
 
             if (!empty($productType)) {
                 $query .= " AND product_type = :productType";
                 $params['productType'] = $productType;
             }
+
             $query .= " ORDER BY product_name";
+
+            $stmt = $conn->prepare($query);
+            $stmt->execute($params);
+            $search_result_set = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $stmt = $conn->prepare("SELECT * FROM product_tbl ORDER BY product_name");
+            $stmt->execute();
+            $search_result_set = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        $stmt = $conn->prepare($query);
-        $stmt->execute($params);
-        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($products as $row) { ?>
-            <div class="col-md-4 col-sm-6">
-                <form action="" method="POST">
-                    <div class="card product-card shadow-lg border-0 p-3 rounded">
-                        <img src='data:image/jpeg;base64,<?= base64_encode($row['product_image']); ?>' class="card-img-top rounded" alt="Product Image" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center">
-                            <h5 class="fw-bold text-dark"><?= $row['product_name']; ?></h5>
-                            <h6 class="text-muted"><?= ucfirst($row['product_type']); ?></h6>
-
-                            <?php
-                            $availableItem = $row['available_item'];
-                            $stockStatus = ($availableItem >= 21) ? '<span class="badge bg-success">In Stock</span>' :
-                                (($availableItem > 0) ? '<span class="badge bg-warning text-dark">Low Stock</span>' :
-                                    '<span class="badge bg-danger">Out of Stock</span>');
-                            echo $stockStatus;
-                            ?>
-
-                            <p class="mt-2 fw-bold">Price: $<?= number_format($row['price'], 2); ?></p>
-                            <input type="hidden" name="id" value="<?= $row['product_Id']; ?>">
-                            <input type="hidden" name="name" value="<?= $row['product_name']; ?>">
-                            <input type="hidden" name="type" value="<?= $row['product_type']; ?>">
-                            <input type="hidden" name="price" value="<?= $row['price']; ?>">
-
-                            <label for="qty">Qty:</label>
-                            <input type="number" value="1" min="1" max="100" name="qty" class="form-control w-50 mx-auto">
-
-                            <button type="submit" name="addCart" class="btn btn-warning mt-3 w-100 fw-bold" <?= ($availableItem > 0) ? '' : 'disabled'; ?>>
-                                <i class="fas fa-shopping-cart"></i> <?= ($availableItem > 0) ? 'Add to Cart' : 'Out of Stock'; ?>
-                            </button>
-                        </div>
+        if (count($search_result_set) == 0 && isset($_POST['search-button'])) {
+            echo '<div class="no-results">
+                    <div class="no-results-icon">
+                        <i class="fas fa-search"></i>
                     </div>
-                </form>
-            </div>
-        <?php } ?>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search terms or browse all products</p>
+                  </div>';
+        } else {
+            echo '<div class="products-grid">';
+            
+            foreach ($search_result_set as $index => $row) {
+                $availableItem = $row['available_item'];
+                $stockStatus = '';
+                $badgeClass = '';
+                
+                if ($availableItem >= 21) {
+                    $stockStatus = 'In Stock';
+                    $badgeClass = 'badge-in-stock';
+                } elseif ($availableItem > 0) {
+                    $stockStatus = 'Low Stock';
+                    $badgeClass = 'badge-low-stock';
+                } else {
+                    $stockStatus = 'Out of Stock';
+                    $badgeClass = 'badge-out-of-stock';
+                }
+                
+                echo '<div class="product-card fade-in" data-aos="fade-up" data-aos-delay="' . ($index * 100) . '">
+                        <form action="" method="POST">
+                            <div class="product-image-container">
+                                <img src="data:image/jpeg;base64,' . base64_encode($row['product_image']) . '" 
+                                     class="product-image" 
+                                     alt="' . htmlspecialchars($row['product_name']) . '">
+                                <div class="product-badge ' . $badgeClass . '">' . $stockStatus . '</div>
+                            </div>
+                            
+                            <div class="product-content">
+                                <h3 class="product-name">' . htmlspecialchars($row['product_name']) . '</h3>
+                                <p class="product-type">' . ucfirst($row['product_type']) . '</p>
+                                <div class="product-price">$' . number_format($row['price'], 2) . '</div>
+                                
+                                <input type="hidden" name="id" value="' . $row['product_Id'] . '">
+                                <input type="hidden" name="name" value="' . htmlspecialchars($row['product_name']) . '">
+                                <input type="hidden" name="type" value="' . $row['product_type'] . '">
+                                <input type="hidden" name="price" value="' . $row['price'] . '">
+                                
+                                <div class="quantity-section">
+                                    <label class="quantity-label" for="qty">Quantity:</label>
+                                    <input type="number" 
+                                           value="1" 
+                                           min="1" 
+                                           max="100" 
+                                           name="qty" 
+                                           class="quantity-input"
+                                           id="qty">
+                                </div>
+                                
+                                <button type="submit" 
+                                        name="addCart" 
+                                        class="add-to-cart-btn" 
+                                        ' . (($availableItem > 0) ? '' : 'disabled') . '>
+                                    <i class="fas fa-shopping-cart me-2"></i>
+                                    ' . (($availableItem > 0) ? 'Add to Cart' : 'Out of Stock') . '
+                                </button>
+                            </div>
+                        </form>
+                      </div>';
+            }
+            
+            echo '</div>';
+        }
+        ?>
     </div>
-</div>
 
-<script>
-    <?php if(isset($_GET['success'])) { ?>
-        Swal.fire({title: 'Added!', text: 'Item added to cart.', icon: 'success'}).then(() => window.location.href = "product.php");
-    <?php } ?>
-</script>
+    <?php include_once('header-footer/footer.php') ?>
 
-<script>
-    function showOutOfStockAlert() {
-        Swal.fire({
-            icon: 'error',
-            title: 'Out of Stock',
-            text: 'This product is currently out of stock and cannot be added to the cart.',
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
         });
-    }
-</script>
 
-  </div>
-</div>
+        // Show success message
+        <?php if(isset($_GET['success'])) { ?>
+            Swal.fire({
+                title: 'Success!',
+                text: 'Product added to cart successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                timer: 3000,
+                timerProgressBar: true
+            });
+        <?php } ?>
 
+        // Add loading animation to forms
+        document.addEventListener('DOMContentLoaded', function() {
+            const forms = document.querySelectorAll('form');
+            
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    if (this.querySelector('button[name="addCart"]')) {
+                        const btn = this.querySelector('button[name="addCart"]');
+                        const originalText = btn.innerHTML;
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Adding...';
+                        btn.disabled = true;
+                        
+                        // Re-enable after 2 seconds
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                        }, 2000);
+                    }
+                });
+            });
 
-<?php
+            // Add smooth scroll behavior
+            document.documentElement.style.scrollBehavior = 'smooth';
 
-include_once('header-footer/footer.php')
+            // Add hover effects to product cards
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
 
-?>
+            // Add quantity input validation
+            const quantityInputs = document.querySelectorAll('.quantity-input');
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    if (this.value < 1) this.value = 1;
+                    if (this.value > 100) this.value = 100;
+                });
+            });
 
+            // Add search form enhancement
+            const searchForm = document.querySelector('.search-form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function() {
+                    const searchInput = this.querySelector('.search-input');
+                    const filterSelect = this.querySelector('.filter-select');
+                    
+                    if (searchInput.value.trim() === '' && filterSelect.value === '') {
+                        // Show all products if no search criteria
+                        return true;
+                    }
+                });
+            }
+        });
 
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.onscroll = () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
 
-<!-- Add the following code to your HTML file -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        // Add smooth animations to product cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-<script>
-  // Show a success message when the item is added to the cart
-  <?php if(isset($_GET['success'])) { ?>
-    Swal.fire({
-      title: 'Success!',
-      text: 'The item was added to the cart.',
-      icon: 'success',
-      button: "OK",
-  }).then(function () {
-      window.location.href = "product.php";
-  });
-    
-  <?php } ?>
-  
-  // Show an error message when the item is already in the cart
-  <?php if(isset($_GET['error'])) { ?>
-    Swal.fire({
-      title: 'Error!',
-      text: 'The item is already in the cart.',
-      icon: 'error',
-      button: "OK",
-  }).then(function () {
-      window.location.href = "product.php";
-  });
-    
-  <?php } ?>
-</script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-
-
-
-
-
-
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-AOS.init();
-</script>
-
-<script>
- const navbar = document.querySelector('.navbar');
-
-window.onscroll = () => {
-  if (window.scrollY > 10) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-};
-</script>
-<script>
-  const search = document.querySelector('.search');
-  const searchHeight = search.offsetHeight;
-
-  window.addEventListener('scroll', () => {
-    if (window.pageYOffset > search.offsetTop + searchHeight - 70) {
-      search.classList.add('fixed');
-    } else {
-      search.classList.remove('fixed');
-    }
-  });
-</script>
-<script>
-  window.onload = function() {
-  window.scrollTo(0, 0);
-}
-
-
-</script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-    </body>
-  </html>
+        // Observe all product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
