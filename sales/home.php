@@ -12,14 +12,14 @@ if (isset($_GET['logout'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BatteryShop - Premium Battery Solutions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script defer src="active_link.js"></script>
@@ -46,13 +46,13 @@ if (isset($_GET['logout'])) {
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 20% 20%, rgba(0, 9, 87, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(52, 76, 183, 0.05) 0%, transparent 50%);
             z-index: -1;
         }
 
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             color: white;
             padding: 120px 0 80px;
             position: relative;
@@ -99,16 +99,16 @@ if (isset($_GET['logout'])) {
         }
 
         .cta-primary {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(135deg, #FFEB00 0%, #FFEB00 100%);
             border: none;
             padding: 16px 32px;
             border-radius: 12px;
-            color: white;
+            color: #000957;
             font-weight: 700;
             font-size: 18px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 235, 0, 0.3);
             display: inline-flex;
             align-items: center;
             gap: 12px;
@@ -116,8 +116,8 @@ if (isset($_GET['logout'])) {
 
         .cta-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
-            color: white;
+            box-shadow: 0 12px 35px rgba(255, 235, 0, 0.4);
+            color: #000957;
         }
 
         .cta-secondary {
@@ -190,7 +190,7 @@ if (isset($_GET['logout'])) {
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
         }
 
         .feature-card:hover {
@@ -201,13 +201,13 @@ if (isset($_GET['logout'])) {
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
             border-radius: 20px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 24px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 9, 87, 0.3);
         }
 
         .feature-icon i {
@@ -280,7 +280,7 @@ if (isset($_GET['logout'])) {
         }
 
         .stats-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             color: white;
             padding: 80px 0;
             position: relative;
@@ -372,7 +372,7 @@ if (isset($_GET['logout'])) {
         }
 
         .btn-primary-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             padding: 16px 32px;
             border-radius: 12px;
@@ -381,7 +381,7 @@ if (isset($_GET['logout'])) {
             font-size: 18px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 9, 87, 0.3);
             display: inline-flex;
             align-items: center;
             gap: 12px;
@@ -389,16 +389,16 @@ if (isset($_GET['logout'])) {
 
         .btn-primary-custom:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 9, 87, 0.4);
             color: white;
         }
 
         .btn-outline-custom {
             background: transparent;
-            border: 2px solid #667eea;
+            border: 2px solid #000957;
             padding: 14px 30px;
             border-radius: 12px;
-            color: #667eea;
+            color: #000957;
             font-weight: 600;
             font-size: 18px;
             text-decoration: none;
@@ -409,7 +409,7 @@ if (isset($_GET['logout'])) {
         }
 
         .btn-outline-custom:hover {
-            background: #667eea;
+            background: #000957;
             color: white;
             transform: translateY(-3px);
         }
@@ -483,7 +483,7 @@ if (isset($_GET['logout'])) {
             }
         }
     </style>
-</head>
+  </head>
 <body>
     <?php include_once('header-footer/header.php') ?>
 
@@ -517,23 +517,23 @@ if (isset($_GET['logout'])) {
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <img src="assets/1.png" class="d-block w-100" alt="Premium Batteries">
-                                    </div>
-                                    <div class="carousel-item">
+                    </div>
+                    <div class="carousel-item">
                                         <img src="assets/2.png" class="d-block w-100" alt="Battery Collection">
-                                    </div>
-                                    <div class="carousel-item">
+                    </div>
+                    <div class="carousel-item">
                                         <img src="assets/3.png" class="d-block w-100" alt="Power Solutions">
-                                    </div>
-                                </div>
+                    </div>
+                    </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
                                 <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+    </div>
                         </div>
                     </div>
                 </div>
@@ -562,7 +562,7 @@ if (isset($_GET['logout'])) {
                         We source only the highest quality batteries from trusted manufacturers, 
                         ensuring reliability and longevity for all your devices.
                     </p>
-                </div>
+    </div>
                 
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-icon">
@@ -573,8 +573,8 @@ if (isset($_GET['logout'])) {
                         Get your batteries delivered quickly with our efficient shipping network. 
                         Most orders arrive within 2-3 business days.
                     </p>
-                </div>
-                
+             </div>
+          
                 <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-icon">
                         <i class="fas fa-headset"></i>
@@ -617,10 +617,10 @@ if (isset($_GET['logout'])) {
                     <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
                         <div class="stat-number">24/7</div>
                         <div class="stat-label">Customer Support</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+  </div>
+</div>
+</div>
     </section>
 
     <!-- Call to Action Section -->

@@ -113,7 +113,7 @@ if (isset($_POST['addCart'])) {
         }
 
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             color: white;
             padding: 100px 0 60px;
             text-align: center;
@@ -183,9 +183,9 @@ if (isset($_POST['addCart'])) {
 
         .search-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #344CB7;
             background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(52, 76, 183, 0.12);
         }
 
         .filter-select {
@@ -200,13 +200,13 @@ if (isset($_POST['addCart'])) {
 
         .filter-select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #344CB7;
             background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(52, 76, 183, 0.12);
         }
 
         .search-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             padding: 14px 30px;
             border-radius: 12px;
@@ -215,12 +215,12 @@ if (isset($_POST['addCart'])) {
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 9, 87, 0.25);
         }
 
         .search-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 9, 87, 0.35);
         }
 
         .products-container {
@@ -319,7 +319,7 @@ if (isset($_POST['addCart'])) {
         .product-price {
             font-size: 1.5rem;
             font-weight: 800;
-            color: #667eea;
+            color: #344CB7;
             margin-bottom: 20px;
         }
 
@@ -347,14 +347,14 @@ if (isset($_POST['addCart'])) {
 
         .quantity-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #344CB7;
+            box-shadow: 0 0 0 3px rgba(52, 76, 183, 0.12);
         }
 
         .add-to-cart-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             border-radius: 12px;
             color: white;
@@ -362,7 +362,7 @@ if (isset($_POST['addCart'])) {
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 9, 87, 0.25);
             position: relative;
             overflow: hidden;
         }
@@ -384,7 +384,7 @@ if (isset($_POST['addCart'])) {
 
         .add-to-cart-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 9, 87, 0.35);
         }
 
         .add-to-cart-btn:disabled {

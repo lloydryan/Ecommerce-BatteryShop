@@ -138,7 +138,7 @@ if (isset($_GET['logout'])) {
         }
 
         .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             color: white;
             padding: 100px 0 60px;
             text-align: center;
@@ -249,7 +249,7 @@ if (isset($_GET['logout'])) {
         .item-price {
             font-size: 1.3rem;
             font-weight: 800;
-            color: #667eea;
+            color: #344CB7;
         }
 
         .item-controls {
@@ -286,8 +286,8 @@ if (isset($_GET['logout'])) {
 
         .quantity-input:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #344CB7;
+            box-shadow: 0 0 0 3px rgba(52, 76, 183, 0.1);
         }
 
         .item-actions {
@@ -384,7 +384,7 @@ if (isset($_GET['logout'])) {
 
         .checkout-btn {
             width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             padding: 16px;
             border-radius: 12px;
@@ -403,7 +403,7 @@ if (isset($_GET['logout'])) {
 
         .checkout-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 9, 87, 0.35);
         }
 
         .checkout-btn:disabled {
@@ -440,7 +440,7 @@ if (isset($_GET['logout'])) {
         }
 
         .continue-shopping {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             padding: 14px 28px;
             border-radius: 12px;
@@ -449,7 +449,7 @@ if (isset($_GET['logout'])) {
             font-size: 1rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 9, 87, 0.25);
             display: inline-flex;
             align-items: center;
             gap: 12px;
@@ -457,7 +457,7 @@ if (isset($_GET['logout'])) {
 
         .continue-shopping:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 9, 87, 0.35);
             color: white;
         }
 

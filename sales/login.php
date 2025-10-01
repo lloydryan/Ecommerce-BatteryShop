@@ -93,7 +93,7 @@ if (isset($_GET['logout'])) {
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -146,7 +146,7 @@ if (isset($_GET['logout'])) {
         }
 
         .login-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             position: relative;
             display: flex;
             align-items: center;
@@ -219,13 +219,13 @@ if (isset($_GET['logout'])) {
         .logo {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
             border-radius: 12px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 9, 87, 0.25);
         }
 
         .logo i {
@@ -264,9 +264,9 @@ if (isset($_GET['logout'])) {
         }
 
         .form-control:focus {
-            border-color: #667eea;
+            border-color: #344CB7;
             background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(52, 76, 183, 0.12);
             transform: translateY(-2px);
         }
 
@@ -288,7 +288,7 @@ if (isset($_GET['logout'])) {
             top: -8px;
             left: 12px;
             font-size: 11px;
-            color: #667eea;
+            color: #344CB7;
             font-weight: 600;
             background: #f9fafb;
         }
@@ -296,7 +296,7 @@ if (isset($_GET['logout'])) {
         .login-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             border-radius: 10px;
             color: white;
@@ -306,7 +306,7 @@ if (isset($_GET['logout'])) {
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 9, 87, 0.25);
             position: relative;
             overflow: hidden;
         }
@@ -328,7 +328,7 @@ if (isset($_GET['logout'])) {
 
         .login-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 9, 87, 0.35);
         }
 
         .form-links {
@@ -337,7 +337,7 @@ if (isset($_GET['logout'])) {
         }
 
         .form-links a {
-            color: #667eea;
+            color: #344CB7;
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
@@ -347,7 +347,7 @@ if (isset($_GET['logout'])) {
         }
 
         .form-links a:hover {
-            color: #764ba2;
+            color: #577BC1;
             text-decoration: underline;
         }
 

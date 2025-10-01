@@ -40,6 +40,58 @@ include_once "connections/pdo.php";
     filter: brightness(1.3);
   }
 
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .logo-container:hover {
+    transform: scale(1.05);
+  }
+
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .logo-container:hover .logo-icon {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(5deg);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-main {
+    font-family: 'MyFont', 'Inter', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .logo-accent {
+    font-family: 'MyFont', 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFEB00;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    margin-top: -2px;
+  }
+
   .nav-link {
     color: rgba(255, 255, 255, 0.9) !important;
     font-weight: 500;
@@ -126,10 +178,10 @@ include_once "connections/pdo.php";
   }
 
   .dropdown-item:hover {
-    background: linear-gradient(135deg, #FF6B35, #F7931E) !important;
+    background: linear-gradient(135deg, #000957, #344CB7, #577BC1) !important;
     color: white !important;
     transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 9, 87, 0.25);
   }
 
   .dropdown-divider {
@@ -138,7 +190,7 @@ include_once "connections/pdo.php";
   }
 
   .cart-badge {
-    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    background: linear-gradient(135deg, #FFEB00, #FFD84D);
     color: white;
     padding: 4px 8px;
     border-radius: 12px;
@@ -146,7 +198,7 @@ include_once "connections/pdo.php";
     font-weight: 600;
     min-width: 20px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+    box-shadow: 0 2px 8px rgba(255, 235, 0, 0.35);
     animation: pulse 2s infinite;
   }
 
@@ -323,7 +375,32 @@ document.addEventListener('DOMContentLoaded', function() {
 <nav class="navbar fixed-top navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="home.php">
-      <img src="header-footer/logo.png">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="8" width="20" height="12" rx="2" fill="url(#batteryGradient)" stroke="white" stroke-width="1.5"/>
+            <rect x="22" y="12" width="2" height="4" rx="1" fill="white"/>
+            <rect x="6" y="10" width="16" height="8" rx="1" fill="white" opacity="0.9"/>
+            <rect x="6" y="10" width="12" height="8" rx="1" fill="url(#batteryFill)"/>
+            <circle cx="12" cy="14" r="1.5" fill="white"/>
+            <defs>
+              <linearGradient id="batteryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FFEB00;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#344CB7;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#000957;stop-opacity:1" />
+              </linearGradient>
+              <linearGradient id="batteryFill" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">Battery</span>
+          <span class="logo-accent">Shop</span>
+        </div>
+      </div>
     </a>
     <button class="navbar-toggler bg-light p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>

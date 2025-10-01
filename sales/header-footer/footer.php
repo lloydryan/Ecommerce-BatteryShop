@@ -1,6 +1,6 @@
 <style>
   .footer {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
     color: white;
     padding: 60px 0 20px;
     margin-top: 80px;
@@ -16,8 +16,8 @@
     right: 0;
     bottom: 0;
     background: 
-      radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+      radial-gradient(circle at 20% 20%, rgba(0, 9, 87, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(52, 76, 183, 0.1) 0%, transparent 50%);
     z-index: 1;
   }
 
@@ -49,13 +49,13 @@
   .footer-logo-icon {
     width: 40px;
     height: 40px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 12px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 9, 87, 0.25);
   }
 
   .footer-logo-icon i {
@@ -96,9 +96,9 @@
   }
 
   .social-link:hover {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 9, 87, 0.35);
     color: white;
   }
 
@@ -117,7 +117,7 @@
     left: 0;
     width: 30px;
     height: 2px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
     border-radius: 1px;
   }
 
@@ -141,7 +141,7 @@
   }
 
   .footer-links a:hover {
-    color: #667eea;
+    color: #FFEB00;
     transform: translateX(5px);
   }
 
@@ -166,7 +166,7 @@
   .contact-item i {
     width: 20px;
     margin-right: 12px;
-    color: #667eea;
+    color: #FFEB00;
   }
 
   .newsletter {
@@ -212,13 +212,13 @@
 
   .newsletter-input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #344CB7;
     background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(52, 76, 183, 0.12);
   }
 
   .newsletter-btn {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
     border: none;
     padding: 12px 20px;
     border-radius: 8px;
@@ -231,7 +231,7 @@
 
   .newsletter-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 9, 87, 0.35);
   }
 
   .footer-bottom {
@@ -263,7 +263,7 @@
   }
 
   .footer-bottom-links a:hover {
-    color: #667eea;
+    color: #FFEB00;
   }
 
   .back-to-top {
@@ -272,7 +272,7 @@
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
     border-radius: 50%;
     display: flex;
     align-items: center;

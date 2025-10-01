@@ -63,7 +63,7 @@ $invalid = false;
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -116,7 +116,7 @@ $invalid = false;
         }
 
         .signup-image {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             position: relative;
             display: flex;
             align-items: center;
@@ -192,13 +192,13 @@ $invalid = false;
         .logo {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
             border-radius: 12px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 9, 87, 0.25);
         }
 
         .logo i {
@@ -248,9 +248,9 @@ $invalid = false;
         }
 
         .form-control:focus {
-            border-color: #667eea;
+            border-color: #344CB7;
             background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(52, 76, 183, 0.12);
             transform: translateY(-2px);
         }
 
@@ -272,7 +272,7 @@ $invalid = false;
             top: -8px;
             left: 12px;
             font-size: 11px;
-            color: #667eea;
+            color: #344CB7;
             font-weight: 600;
             background: #f9fafb;
         }
@@ -280,7 +280,7 @@ $invalid = false;
         .signup-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             border-radius: 10px;
             color: white;
@@ -290,7 +290,7 @@ $invalid = false;
             letter-spacing: 0.5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 9, 87, 0.25);
             position: relative;
             overflow: hidden;
             margin-top: 8px;
@@ -322,7 +322,7 @@ $invalid = false;
         }
 
         .form-links a {
-            color: #667eea;
+            color: #344CB7;
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
@@ -332,7 +332,7 @@ $invalid = false;
         }
 
         .form-links a:hover {
-            color: #764ba2;
+            color: #577BC1;
             text-decoration: underline;
         }
 
@@ -382,7 +382,7 @@ $invalid = false;
         }
 
         .footer-links a:hover {
-            color: #667eea;
+            color: #344CB7;
             text-decoration: underline;
         }
 

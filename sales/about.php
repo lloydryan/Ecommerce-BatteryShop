@@ -27,7 +27,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
@@ -156,13 +156,13 @@ if (session_status() == PHP_SESSION_NONE) {
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #000957, #344CB7, #577BC1);
             border-radius: 16px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 9, 87, 0.25);
         }
 
         .feature-icon i {
@@ -183,7 +183,7 @@ if (session_status() == PHP_SESSION_NONE) {
         }
 
         .creator-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             color: white;
             padding: 60px;
             text-align: center;
@@ -329,7 +329,7 @@ if (session_status() == PHP_SESSION_NONE) {
         }
 
         .btn-primary-custom {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #000957 0%, #344CB7 50%, #577BC1 100%);
             border: none;
             padding: 14px 32px;
             border-radius: 12px;
@@ -337,28 +337,28 @@ if (session_status() == PHP_SESSION_NONE) {
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 9, 87, 0.25);
         }
 
         .btn-primary-custom:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 12px 35px rgba(0, 9, 87, 0.35);
             color: white;
         }
 
         .btn-outline-custom {
             background: transparent;
-            border: 2px solid #667eea;
+            border: 2px solid #000957;
             padding: 12px 30px;
             border-radius: 12px;
-            color: #667eea;
+            color: #000957;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .btn-outline-custom:hover {
-            background: #667eea;
+            background: #000957;
             color: white;
             transform: translateY(-2px);
         }
